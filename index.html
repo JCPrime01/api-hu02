@@ -43,15 +43,15 @@
 
       .card {
         width: 100%;
-        max-width: 360px;
+        max-width: 380px;
         background: #001301;
         border: 1px solid #02FF6B;
         border-radius: 20px;
-        padding: 15px 20px;
+        padding: 15px 20px 25px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 5px;
+        gap: 8px;
         position: relative;
       }
 
@@ -59,13 +59,13 @@
         background: rgba(255, 255, 0, 0.1);
         border: 1px solid #FFFF00;
         border-radius: 8px;
-        padding: 4px 12px;
+        padding: 5px 15px;
         margin-bottom: 5px;
         animation: pulse-yellow 2s infinite;
       }
 
-      .vagas-text { color: #fff; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-      #numero-vagas { color: #FFFF00; font-size: 15px; font-weight: bold; }
+      .vagas-text { color: #fff; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      #numero-vagas { color: #FFFF00; font-size: 16px; font-weight: bold; }
 
       @keyframes pulse-yellow {
         0% { box-shadow: 0 0 0px rgba(255, 255, 0, 0); }
@@ -73,11 +73,11 @@
         100% { box-shadow: 0 0 0px rgba(255, 255, 0, 0); }
       }
 
-      .card img { width: 100%; max-width: 240px; height: auto; }
+      .card img { width: 100%; max-width: 280px; height: auto; }
 
       h2.white {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: 22px;
+        font-size: 24px;
         color: #fff;
         text-align: center;
         line-height: 1;
@@ -85,18 +85,17 @@
 
       h2.green {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: 30px;
+        font-size: 32px;
         color: #00EC51;
         text-align: center;
         line-height: 1;
       }
 
       .subtitle {
-        font-size: 12px;
+        font-size: 13px;
         color: #fff;
         text-align: center;
         line-height: 1.3;
-        margin: 5px 0;
       }
 
       .btn {
@@ -107,47 +106,40 @@
         text-align: center;
         font-size: 15px;
         font-weight: 800;
-        padding: 12px;
+        padding: 14px;
         border-radius: 50px;
         text-decoration: none;
+        margin-top: 10px;
         box-shadow: 0 0 20px rgba(0, 236, 81, 0.4);
       }
 
-      /* NOTIFICAÇÃO CENTRALIZADA COM ANIMAÇÃO LATERAL */
+      /* NOTIFICAÇÃO CENTRALIZADA */
       .toast {
         position: fixed;
-        top: 25px;
+        top: 20px;
         left: 50%;
-        /* Começa escondido à esquerda e fora do centro */
-        transform: translate(-150%, 0); 
+        /* Começa fora da tela à esquerda */
+        transform: translate(-150vw, 0); 
         background: #001301;
         border: 1px solid #02FF6B;
         border-radius: 12px;
-        padding: 10px 18px;
+        padding: 10px 15px;
         display: flex;
         align-items: center;
         gap: 10px;
         z-index: 9999;
-        min-width: 260px;
-        visibility: hidden;
-        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        box-shadow: 0 5px 25px rgba(0,0,0,0.8);
+        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        white-space: nowrap;
       }
 
-      /* Estado visível: centralizado */
+      /* Quando ativo: centraliza usando translate -50% */
       .toast.show { 
-        visibility: visible;
         transform: translate(-50%, 0); 
       }
 
-      /* Estado de saída: vai para a direita */
-      .toast.exit {
-        transform: translate(150%, 0);
-        opacity: 0;
-      }
-
       .toast-icon { width: 10px; height: 10px; background: #02FF6B; border-radius: 50%; box-shadow: 0 0 10px #02FF6B; }
-      .toast-text { color: #fff; font-size: 13px; white-space: nowrap; }
+      .toast-text { color: #fff; font-size: 13px; }
       .toast-text b { color: #FFFF00; }
 
       footer { margin-top: 15px; font-size: 10px; color: #555; text-align: center; }
@@ -188,16 +180,8 @@
         const nomeEl = document.getElementById('notif-nome');
         if (toast && nomeEl) {
             nomeEl.innerText = nomes[Math.floor(Math.random() * nomes.length)];
-            
-            // Limpa classes de ciclos anteriores
-            toast.classList.remove('exit');
             toast.classList.add('show');
-
-            // Depois de 3 segundos, inicia a saída pela direita
-            setTimeout(() => {
-              toast.classList.add('exit');
-              toast.classList.remove('show');
-            }, 3000);
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
         }
       }
 
