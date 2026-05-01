@@ -22,7 +22,6 @@
       fbq('track', 'CompleteRegistration', { currency: 'BRL', value: 0 }, { eventID: eventId });
     }
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1290557609656779&ev=PageView&noscript=1"/></noscript>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -32,87 +31,72 @@
 
       body {
         background-color: #000E01;
-        min-height: 100vh;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         font-family: 'Inter', sans-serif;
-        padding: 20px;
-        overflow-x: hidden;
+        padding: 10px;
+        overflow: hidden; /* Evita scroll desnecessário no mobile */
       }
 
       .card {
         width: 100%;
-        max-width: 420px;
+        max-width: 380px;
         background: #001301;
         border: 1px solid #02FF6B;
-        border-radius: 24px;
-        padding: 60px 30px 40px;
+        border-radius: 20px;
+        padding: 15px 20px 25px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         position: relative;
-        margin-top: 40px;
       }
 
       .vagas-box {
         background: rgba(255, 255, 0, 0.1);
-        border: 2px solid #FFFF00;
-        border-radius: 12px;
-        padding: 8px 20px;
-        margin-top: 10px;
-        margin-bottom: 15px;
+        border: 1px solid #FFFF00;
+        border-radius: 8px;
+        padding: 5px 15px;
+        margin-bottom: 5px;
         animation: pulse-yellow 2s infinite;
       }
 
-      .vagas-text {
-        color: #fff;
-        font-size: 14px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      #numero-vagas {
-        color: #FFFF00;
-        font-size: 20px;
-        font-weight: bold;
-        text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
-      }
+      .vagas-text { color: #fff; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      #numero-vagas { color: #FFFF00; font-size: 16px; font-weight: bold; }
 
       @keyframes pulse-yellow {
         0% { box-shadow: 0 0 0px rgba(255, 255, 0, 0); }
-        50% { box-shadow: 0 0 15px rgba(255, 255, 0, 0.4); }
+        50% { box-shadow: 0 0 10px rgba(255, 255, 0, 0.3); }
         100% { box-shadow: 0 0 0px rgba(255, 255, 0, 0); }
       }
 
-      .card img { width: 100%; max-width: 360px; }
+      /* IMAGEM REDUZIDA PARA CABER TUDO */
+      .card img { width: 100%; max-width: 280px; height: auto; }
 
       h2.white {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(24px, 6vw, 38px);
+        font-size: 24px;
         color: #fff;
         text-align: center;
         line-height: 1;
-        white-space: nowrap;
       }
 
       h2.green {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(36px, 10vw, 48px);
+        font-size: 32px;
         color: #00EC51;
         text-align: center;
         line-height: 1;
       }
 
       .subtitle {
-        font-size: 14px;
+        font-size: 13px;
         color: #fff;
         text-align: center;
-        line-height: 1.5;
-        margin-top: 10px;
+        line-height: 1.3;
       }
 
       .btn {
@@ -121,56 +105,39 @@
         background: #00EC51;
         color: #000E01;
         text-align: center;
-        font-family: 'Inter', sans-serif;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 800;
-        letter-spacing: 0.5px;
-        padding: 16px;
-        border-radius: 60px;
+        padding: 14px;
+        border-radius: 50px;
         text-decoration: none;
-        margin-top: 25px;
-        box-shadow: 0 0 25px rgba(0, 236, 81, 0.4);
-        transition: 0.3s;
+        margin-top: 10px;
+        box-shadow: 0 0 20px rgba(0, 236, 81, 0.4);
       }
 
+      /* NOTIFICAÇÃO DA ESQUERDA PARA DIREITA */
       .toast {
         position: fixed;
-        top: -100px;
-        left: 50%;
-        transform: translateX(-50%);
+        top: 20px;
+        left: -350px; /* Começa fora da tela na esquerda */
         background: #001301;
         border: 1px solid #02FF6B;
-        border-radius: 15px;
-        padding: 12px 20px;
+        border-radius: 12px;
+        padding: 10px 15px;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         z-index: 9999;
-        min-width: 290px;
-        transition: top 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+        transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.8);
       }
 
-      .toast.show { top: 30px; }
+      .toast.show { left: 15px; } /* Entra na tela */
 
-      .toast-icon {
-        width: 12px;
-        height: 12px;
-        background: #02FF6B;
-        border-radius: 50%;
-        box-shadow: 0 0 12px #02FF6B;
-      }
-
-      .toast-text { color: #fff; font-size: 14px; }
+      .toast-icon { width: 10px; height: 10px; background: #02FF6B; border-radius: 50%; box-shadow: 0 0 10px #02FF6B; }
+      .toast-text { color: #fff; font-size: 13px; }
       .toast-text b { color: #FFFF00; }
 
-      footer {
-        margin-top: 20px;
-        font-size: 11px;
-        color: #666;
-        text-align: center;
-        max-width: 400px;
-      }
+      footer { margin-top: 15px; font-size: 10px; color: #555; text-align: center; }
     </style>
 </head>
 <body>
@@ -190,14 +157,14 @@
       <h2 class="white">ACESSO LIBERADO AO</h2>
       <h2 class="green">BILHETE DE ODD 100</h2>
       
-      <p class="subtitle"><strong>Fale</strong> comigo <strong>AGORA</strong>, para <strong>pegar</strong> o bilhete e entrar na <strong>comunidade</strong>.</p>
+      <p class="subtitle"><strong>Fale</strong> comigo <strong>AGORA</strong> para <strong>pegar</strong> o bilhete.</p>
       
       <a href="https://rp.redirecionar.online/" class="btn" onclick="dispararLead()">ENTRAR AGORA 🚀</a>
     </div>
 
     <footer>
-      <strong>Proibido para menores de 18 anos. Jogue com responsabilidade.</strong><br>
-      © Copyright 2025 – Jogador Caro
+      <strong>Proibido para menores de 18 anos.</strong><br>
+      © 2025 – Jogador Caro
     </footer>
 
     <script>
@@ -206,16 +173,10 @@
       function mostrarNotificacao() {
         const toast = document.getElementById('notif-toast');
         const nomeEl = document.getElementById('notif-nome');
-        
         if (toast && nomeEl) {
-            const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
-            nomeEl.innerText = nomeAleatorio;
-            
+            nomeEl.innerText = nomes[Math.floor(Math.random() * nomes.length)];
             toast.classList.add('show');
-
-            setTimeout(() => {
-              toast.classList.remove('show');
-            }, 3000); // Fica visível por 3 segundos
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
         }
       }
 
@@ -223,35 +184,23 @@
         let contagem = 12;
         const display = document.getElementById('numero-vagas');
         
-        // 1. Inicia a queda das vagas mais rápido (a cada 4 segundos)
         const timerVagas = setInterval(() => {
           if (contagem > 2) {
-            if (Math.random() > 0.3) { // 70% de chance de cair
+            if (Math.random() > 0.3) {
               contagem--;
               if(display) display.innerText = contagem;
-              // Sempre que cai uma vaga, mostra alguém entrando
-              setTimeout(mostrarNotificacao, 500); 
+              setTimeout(mostrarNotificacao, 300); 
             }
-          } else {
-            clearInterval(timerVagas);
-          }
-        }, 4000); 
+          } else { clearInterval(timerVagas); }
+        }, 4500); 
 
-        // 2. Notificações extras aleatórias (a cada 7 segundos)
-        setInterval(() => {
-           if (Math.random() > 0.5) mostrarNotificacao();
-        }, 7000);
-
-        // 3. Primeira ação em apenas 1 segundo após abrir
         setTimeout(() => {
             contagem--;
             if(display) display.innerText = contagem;
             mostrarNotificacao();
-        }, 1000);
+        }, 800);
       }
-      
       window.onload = iniciarFunil;
     </script>
-
 </body>
 </html>
