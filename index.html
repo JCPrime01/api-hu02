@@ -1,127 +1,253 @@
 <!DOCTYPE html>
-  <html lang="pt-BR">                                                                                                             
-  <head>
-    <meta charset="UTF-8">                    
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Comunidade HN</title>              
-                                                                                                                                                                                           
-    <!-- Meta Pixel -->                       
-    <script>                                                                                                                                                                               
+    <title>Comunidade HN - Oficial</title>
+
+    <script>
     !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?                                                                                                                                      
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';                                                                                                                              
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];                                                                                                                                                
+    t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');                                                                                                                                     
+    'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1290557609656779');
-    fbq('track', 'PageView');                                                                                                                                                              
-                                          
-    function dispararLead() {                                                                                                                                                              
-      const eventId = 'CompleteRegistration' + Date.now();                                                                                                                                 
-      const fbp = document.cookie.match(/_fbp=([^;]+)/)?.[1] || null;
-      const fbc = document.cookie.match(/_fbc=([^;]+)/)?.[1] || null;                                                                                                                      
+    fbq('track', 'PageView');
+
+    function dispararLead() {
+      const eventId = 'CompleteRegistration' + Date.now();
       fbq('track', 'CompleteRegistration', { currency: 'BRL', value: 0 }, { eventID: eventId });
-    }                                                                                                                                                                                      
-    </script>                                                                                                                                                                              
+    }
+    </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1290557609656779&ev=PageView&noscript=1"/></noscript>
-                                                                                                                                                                                           
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet">                                                              
-                                                                                                                                                                                           
-    <style>                                                                                                                                                                                
-      * { margin: 0; padding: 0; box-sizing: border-box; }                                                                                                                                 
-                                                                                                                                                                                           
-      body {      
-        background-color: #000E01;                                                                                                                                                         
-        min-height: 100vh;                    
-        display: flex;                    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        background-color: #000E01;
+        min-height: 100vh;
+        display: flex;
         flex-direction: column;
-        align-items: center;                                                                                                                                                               
-        justify-content: center;              
-        font-family: 'Inter', sans-serif;                                                                                                                                                  
+        align-items: center;
+        justify-content: center;
+        font-family: 'Inter', sans-serif;
         padding: 20px;
-      }                                                                                                                                                                                    
-   
-      .card {                                                                                                                                                                              
+        overflow-x: hidden;
+      }
+
+      .card {
         width: 100%;
         max-width: 420px;
-        background: #001301;                  
-        border: 1px solid #02FF6B;        
-        border-radius: 24px;                  
-        padding: 30px 30px 60px;                                                                                                                                                           
-        display: flex;                        
-        flex-direction: column;                                                                                                                                                            
+        background: #001301;
+        border: 1px solid #02FF6B;
+        border-radius: 24px;
+        padding: 30px 30px 60px;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 10px;                                                                                                                                                                         
-      }           
-                                                                                                                                                                                           
-      .card img { width: 100%; max-width: 360px; }
-                                          
-      h2.white {
-        font-family: 'Bebas Neue', sans-serif;                                                                                                                                             
-        font-size: clamp(24px, 6vw, 38px);
-        color: #fff;                                                                                                                                                                       
-        text-align: center;               
-        line-height: 1;
-        white-space: nowrap;                                                                                                                                                               
+        gap: 10px;
+        position: relative;
       }
-                                                                                                                                                                                           
-      h2.green {                              
+
+      .vagas-box {
+        background: rgba(255, 255, 0, 0.1);
+        border: 2px solid #FFFF00;
+        border-radius: 12px;
+        padding: 8px 20px;
+        margin-bottom: 15px;
+        animation: pulse-yellow 2s infinite;
+      }
+
+      .vagas-text {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      #numero-vagas {
+        color: #FFFF00;
+        font-size: 20px;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+      }
+
+      @keyframes pulse-yellow {
+        0% { box-shadow: 0 0 0px rgba(255, 255, 0, 0); }
+        50% { box-shadow: 0 0 15px rgba(255, 255, 0, 0.4); }
+        100% { box-shadow: 0 0 0px rgba(255, 255, 0, 0); }
+      }
+
+      .card img { width: 100%; max-width: 360px; }
+
+      h2.white {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(24px, 6vw, 38px);
+        color: #fff;
+        text-align: center;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      h2.green {
         font-family: 'Bebas Neue', sans-serif;
         font-size: clamp(36px, 10vw, 48px);
-        color: #00EC51;                                                                                                                                                                    
+        color: #00EC51;
         text-align: center;
-        line-height: 1;                                                                                                                                                                    
-      }                                   
+        line-height: 1;
+      }
 
-      .subtitle {                                                                                                                                                                          
+      .subtitle {
         font-size: 14px;
-        color: #fff;                                                                                                                                                                       
+        color: #fff;
         text-align: center;
         line-height: 1.5;
-      }                                       
-                                          
+        margin-top: 10px;
+      }
+
       .btn {
-        display: inline-block;                                                                                                                                                             
+        display: block;
+        width: 100%;
         background: #00EC51;
-        color: #000E01;                                                                                                                                                                    
+        color: #000E01;
         text-align: center;
         font-family: 'Inter', sans-serif;
-        font-size: 15px;                      
-        font-weight: 700;                 
+        font-size: 16px;
+        font-weight: 800;
         letter-spacing: 0.5px;
-        padding: 14px 40px;                                                                                                                                                                
+        padding: 16px;
         border-radius: 60px;
-        text-decoration: none;                                                                                                                                                             
-        margin-top: 5px;                      
-        box-shadow: 0 0 27px rgba(0, 236, 81, 0.5);
+        text-decoration: none;
+        margin-top: 25px;
+        box-shadow: 0 0 25px rgba(0, 236, 81, 0.4);
+        transition: 0.3s;
       }
-                                                                                                                                                                                           
+
+      .toast {
+        position: fixed;
+        bottom: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #001301;
+        border: 1px solid #02FF6B;
+        border-radius: 15px;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 9999;
+        min-width: 290px;
+        transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+      }
+
+      .toast.show { bottom: 40px; }
+
+      .toast-icon {
+        width: 12px;
+        height: 12px;
+        background: #02FF6B;
+        border-radius: 50%;
+        box-shadow: 0 0 12px #02FF6B;
+      }
+
+      .toast-text {
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .toast-text b {
+        color: #FFFF00;
+      }
+
       footer {
-        margin-top: 16px;                                                                                                                                                                  
-        font-size: 11px;                      
-        color: #919191;                   
+        margin-top: 20px;
+        font-size: 11px;
+        color: #666;
         text-align: center;
-        max-width: 420px;                                                                                                                                                                  
+        max-width: 400px;
       }
-    </style>                                                                                                                                                                               
-  </head>         
-  <body>
-                                              
-    <div class="card">                    
-      <img src="https://grupogratuito.website/wp-content/uploads/2025/10/Jota_LP-WhatsApp-2.png" alt="">
-      <h2 class="white">ACESSO LIBERADO A MINHA</h2>                                                                                                                                       
-      <h2 class="green">COMUNIDADE GRATUITO</h2>
-      <p class="subtitle"><strong>Entre</strong> e <strong>aguarde</strong>, as <strong>entradas</strong> serão enviada em <strong>instantes</strong>.</p>                                 
+    </style>
+</head>
+<body>
+
+    <div class="card">
+      <div class="vagas-box">
+          <p class="vagas-text">Restam apenas <span id="numero-vagas">12</span> vagas</p>
+      </div>
+
+      <img src="https://grupogratuito.website/wp-content/uploads/2025/10/Jota_LP-WhatsApp-2.png" alt="Jogador Caro">
+      
+      <h2 class="white">ACESSO LIBERADO AO</h2>
+      <h2 class="green">BILHETE DE ODD 100</h2>
+      
+      <p class="subtitle"><strong>Entre</strong> e <strong>aguarde</strong>, as <strong>entradas</strong> serão enviadas em <strong>instantes</strong>.</p>
+      
       <a href="https://rp.redirecionar.online/" class="btn" onclick="dispararLead()">ENTRAR AGORA</a>
-    </div>                                                                                                                                                                                 
-                                          
-    <footer>                                                                                                                                                                               
-      <strong>Proibido para menores de 18 anos. Jogue com responsabilidade.</strong><br>                                                                                                   
-      © Copyright 2025 – Jogador Caro                                                                                                                                                      
-    </footer>                                                                                                                                                                              
-                  
-  </body>                                                                                                                                                                                  
-  </html>
+    </div>
+
+    <div id="notif-toast" class="toast">
+        <div class="toast-icon"></div>
+        <p class="toast-text"><b id="notif-nome">Marcos</b> acabou de entrar!</p>
+    </div>
+
+    <footer>
+      <strong>Proibido para menores de 18 anos. Jogue com responsabilidade.</strong><br>
+      © Copyright 2025 – Jogador Caro
+    </footer>
+
+    <script>
+      const nomes = ["Lucas", "Matheus", "Gabriel", "Felipe", "Rodrigo", "Rafael", "Bruno", "Daniel", "Gustavo", "Thiago", "Amanda", "Beatriz", "Julian", "Vinícius", "Arthur", "Ricardo", "Fernando", "Guilherme", "João", "Pedro"];
+
+      function mostrarNotificacao() {
+        const toast = document.getElementById('notif-toast');
+        const nomeEl = document.getElementById('notif-nome');
+        
+        if (toast && nomeEl) {
+            const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+            nomeEl.innerText = nomeAleatorio;
+            
+            toast.classList.add('show');
+
+            setTimeout(() => {
+              toast.classList.remove('show');
+            }, 4000);
+        }
+      }
+
+      function iniciarFunil() {
+        let contagem = 12;
+        const display = document.getElementById('numero-vagas');
+        
+        const timerVagas = setInterval(() => {
+          if (contagem > 3) {
+            if (Math.random() > 0.4) {
+              contagem--;
+              if(display) display.innerText = contagem;
+              setTimeout(mostrarNotificacao, 1000); 
+            }
+          } else {
+            clearInterval(timerVagas);
+          }
+        }, 9000);
+
+        setInterval(() => {
+           if (Math.random() > 0.6) mostrarNotificacao();
+        }, 15000);
+
+        setTimeout(mostrarNotificacao, 2000);
+      }
+      
+      window.onload = iniciarFunil;
+    </script>
+
+</body>
+</html>
